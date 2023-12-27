@@ -1,0 +1,5 @@
+OpenSBI（Open Source Supervisor Binary Interface）是一个开源的RISC-V的SBI实现。SBI（Supervisor Binary Interface）定义了在RISC-V架构下，监督模式软件（比如操作系统内核）和机器模式软件（比如固件）之间的接口。
+
+在RISC-V中，机器模式是最高权限级别，而监督模式则是操作系统内核运行的权限级别。因此，操作系统内核通常不能直接进行一些需要最高权限级别的操作，它需要通过调用SBI的接口来请求固件进行这些操作。
+
+当操作系统内核需要进行一些特权操作（比如设定时器，发送中断等）时，它会设置好寄存器中的系统调用号和参数，然后执行ecall指令来调用OpenSBI的服务。OpenSBI会检查系统调用号，并执行相应的服务程序。
